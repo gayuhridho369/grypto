@@ -1,10 +1,12 @@
 "use client";
-
+import { useState } from "react";
 import { useTheme } from "next-themes";
+import { RefreshCw } from "lucide-react";
 import { PropagateLoader } from "react-spinners";
+import { cn } from "@/lib/utils";
 import useKrakenOrderAPi from "@/resources/use-kraken-order-api";
 import { Coin } from "@/constants/coin";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -13,10 +15,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
   const { theme } = useTheme();
   const isLight = theme === "light";
+
+  const [refresh, setRefresh] = useState(0);
 
   const primaryColor = isLight ? "#2563EB" : "#3A81F4";
 
@@ -24,11 +29,27 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
     useKrakenOrderAPi({
       pair: coinSelected.pair,
       resultKey: coinSelected.result,
+      refresh: refresh,
     });
 
   return (
     <Card>
-      <CardContent className="grid gap-2 p-4">
+      <CardHeader>
+        <div className="grid gap-2">
+          <CardTitle className="flex justify-between text-lg">
+            Order Book
+            <Button onClick={() => setRefresh((prev) => prev + 1)}>
+              <RefreshCw
+                className={cn(
+                  "h-4 w-4",
+                  dataOrderApiLoading ? "animate-spin" : ""
+                )}
+              />
+            </Button>
+          </CardTitle>
+        </div>
+      </CardHeader>
+      <CardContent className="grid gap-2">
         <>
           <h2 className="text-red-500 font-bold">Asks</h2>
           <div className="h-[200px] overflow-auto">

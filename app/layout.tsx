@@ -27,7 +27,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen w-full max-w-[1600px] m-auto">
+          <div className="flex flex-col min-h-screen w-full max-w-[1600px] overflow-x-hidden m-auto">
             <HeaderSider />
             {children}
             <Footer />

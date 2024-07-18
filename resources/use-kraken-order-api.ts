@@ -4,9 +4,11 @@ import { KRAKEN_API_URL } from "@/constants/api";
 const useKrakenOrderAPi = ({
   pair,
   resultKey,
+  refresh,
 }: {
   pair: string;
   resultKey: string;
+  refresh: number;
 }) => {
   const [dataOrderAsksApi, setDataOrderAsksApi] = useState([]);
   const [dataOrderBidsApi, setDataOrderBidsApi] = useState([]);
@@ -35,7 +37,7 @@ const useKrakenOrderAPi = ({
     };
 
     fetchData();
-  }, [pair]);
+  }, [pair, refresh]);
 
   return { dataOrderAsksApi, dataOrderBidsApi, dataOrderApiLoading: loading };
 };

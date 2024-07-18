@@ -30,13 +30,13 @@ export default function MarketData() {
 
   return (
     <div id="market-data">
-      <Card className="xl:col-span-2 h-max mt-[120px]">
-        <CardHeader className="flex flex-row gap-36 items-center justify-between">
+      <Card className="xl:col-span-2 h-max mt-[60px] md:mt-[120px]">
+        <CardHeader className="flex flex-row gap-4 md:gap-36 items-center justify-between">
           <div className="grid gap-2">
-            <CardTitle className="text-3xl font-bold">
+            <CardTitle className="text-lg md:text-3xl font-bold">
               Market Data of Cryptocurrency
             </CardTitle>
-            <CardDescription className="text-md text-secondary-foreground/70">
+            <CardDescription className="text-sm md:text-base text-secondary-foreground/70 hidden md:block">
               Discover real-time cryptocurrency market data, including price
               updates, trading volumes, and detailed analysis for informed
               investment decisions.
@@ -73,8 +73,8 @@ export default function MarketData() {
           </DropdownMenu>
         </CardHeader>
 
-        <CardContent className="grid grid-cols-3 gap-6">
-          <div className="col-span-2">
+        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="col-span-1 md:col-span-2">
             <CandlestickChart coinSelected={coinSelected} />
           </div>
           <div>

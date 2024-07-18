@@ -17,7 +17,7 @@ export const TESTIMONIAL = [
     name: "Jane Smith",
     position: "Software Engineer at CodeCrafters Ltd.",
     testimonial:
-      "Security is crucial in digital assets, and Grypto excels here. Their seamless user experience and robust support make it the top platform for both novice.",
+      "Security is crucial in digital assets, and Grypto excels here. Their seamless user experience and robust support make it the top platform for both novice. Highly recommended.",
   },
   {
     photo: img3,

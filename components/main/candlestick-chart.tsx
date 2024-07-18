@@ -88,7 +88,7 @@ export default function CandlestickChart({
         text: coinSelected.name.toUpperCase() + " / USD",
         style: {
           color: primaryColor,
-          fontSize: "24px",
+          fontSize: "16px",
           fontWeight: "bold",
         },
       },
