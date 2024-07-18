@@ -9,13 +9,13 @@ export default function DownloadApp() {
     <div id="installation">
       <div className="mt-[160px]">
         <h1 className="text-3xl font-bold mb-4">
-          "Simple Investment: Anytime and Anywhere"
+          &quot;Simple Investment: Anytime and Anywhere&quot;
         </h1>
         <Card className="bg-primary/10">
           <CardContent className="relative min-h-[250px] flex flex-col justify-between p-8">
             <div className="w-1/2">
               <p className="text-md text-secondary-foreground/70">
-                Let's go, download the Grypto App on iOS or Android and get
+                Let&apos;s go, download the Grypto App on iOS or Android and get
                 vouchers/discounts for new members!
               </p>
 

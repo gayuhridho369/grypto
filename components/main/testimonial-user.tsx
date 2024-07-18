@@ -14,7 +14,9 @@ export default function TestimonialUser() {
     <div id="testimonial">
       <div className="mt-[120px]">
         <div className="flex justify-center w-full mb-6">
-          <h2 className="text-4xl font-bold">"Testimonial of Users"</h2>
+          <h2 className="text-4xl font-bold">
+            &quot;Testimonial of Users&quor;
+          </h2>
         </div>
         <Carousel
           opts={{
@@ -44,7 +46,7 @@ export default function TestimonialUser() {
                           {item.position}
                         </h4>
                         <p className="text-sm text-muted-foreground text-center mt-4">
-                          "{item.testimonial}""
+                          &quot;{item.testimonial}&quot;
                         </p>
                       </div>
                     </CardContent>

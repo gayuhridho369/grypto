@@ -185,7 +185,17 @@ export default function CandlestickChart({
         },
       ],
     };
-  }, [dataOhlcApi, theme, coinSelected]);
+  }, [
+    dataOhlcApi,
+    theme,
+    coinSelected,
+    blackWhiteColor,
+    borderColor,
+    buttonFilterColor,
+    buttonFilterHoverColor,
+    primaryColor,
+    whiteBlackColor,
+  ]);
 
   return (
     <>
