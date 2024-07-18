@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { PropagateLoader } from "react-spinners";
 import useKrakenOrderAPi from "@/resources/use-kraken-order-api";

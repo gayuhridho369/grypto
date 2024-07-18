@@ -1,8 +1,11 @@
 import HeroBrand from "@/components/main/hero-brand";
 import PopularCrypto from "@/components/main/popular-crypto";
-import MarketData from "@/components/main/market-data";
 import DownloadApp from "@/components/main/download-app";
 import TestimonialUser from "@/components/main/testimonial-user";
+import dynamic from "next/dynamic";
+const MarketData = dynamic(() => import("@/components/main/market-data"), {
+  ssr: false,
+});
 
 export default function Page() {
   return (

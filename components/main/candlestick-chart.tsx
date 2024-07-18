@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useRef } from "react";
 import { useTheme } from "next-themes";
 import { ScaleLoader } from "react-spinners";
@@ -187,7 +189,6 @@ export default function CandlestickChart({
     };
   }, [
     dataOhlcApi,
-    theme,
     coinSelected,
     blackWhiteColor,
     borderColor,
