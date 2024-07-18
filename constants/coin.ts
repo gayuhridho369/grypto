@@ -22,7 +22,7 @@ export interface Coin {
 export const COIN_LIST: Coin[] = [
   {
     code: "BTC",
-    symbol: "BTC/USD",
+    symbol: "BTCUSD",
     pair: "XBTUSD",
     name: "Bitcoin",
     result: "XXBTZUSD",
@@ -30,7 +30,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "ETH",
-    symbol: "ETH/USD",
+    symbol: "ETHUSD",
     pair: "ETHUSD",
     name: "Ethereum",
     result: "XETHZUSD",
@@ -38,7 +38,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "USDT",
-    symbol: "USDT/USD",
+    symbol: "USTUSD",
     pair: "USDTUSD",
     name: "Tether",
     result: "USDTZUSD",
@@ -46,7 +46,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "XRP",
-    symbol: "XRP/USD",
+    symbol: "XRPUSD",
     pair: "XRPUSD",
     name: "Ripple",
     result: "XXRPZUSD",
@@ -54,7 +54,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "ADA",
-    symbol: "ADA/USD",
+    symbol: "ADAUSD",
     pair: "ADAUSD",
     name: "Cardano",
     result: "ADAUSD",
@@ -62,7 +62,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "SOL",
-    symbol: "SOL/USD",
+    symbol: "SOLUSD",
     pair: "SOLUSD",
     name: "Solana",
     result: "SOLUSD",
@@ -70,7 +70,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "DOGE",
-    symbol: "DOGE/USD",
+    symbol: "DOGEUSD",
     pair: "DOGEUSD",
     name: "Dogecoin",
     result: "XDGUSD",
@@ -78,7 +78,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "DOT",
-    symbol: "DOT/USD",
+    symbol: "DOTUSD",
     pair: "DOTUSD",
     name: "Polkadot",
     result: "DOTUSD",
@@ -86,7 +86,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "MATIC",
-    symbol: "MATIC/USD",
+    symbol: "MATICUSD",
     pair: "MATICUSD",
     name: "Polygon",
     result: "MATICUSD",
@@ -94,7 +94,7 @@ export const COIN_LIST: Coin[] = [
   },
   {
     code: "LTC",
-    symbol: "LTC/USD",
+    symbol: "LTCUSD",
     pair: "LTCUSD",
     name: "Litecoin",
     result: "XLTCZUSD",

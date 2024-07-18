@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useTheme } from "next-themes";
 import { ScaleLoader } from "react-spinners";
-import useKrakenOhlcApi from "@/resources/use-kraken-ohlc-api";
-import useKrakenOhlcSocket from "@/resources/use-kraken-ohlc-socket";
 import { Coin } from "@/constants/coin";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts, { RangeSelectorButtonsOptions } from "highcharts/highstock";
 import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsAccessibility from "highcharts/modules/accessibility";
 import HighchartsPrice from "highcharts/modules/price-indicator";
+import useBitfinexOhlcSocket from "@/resources/use-bitfinex-ohlc-socket";
 
 HighchartsExporting(Highcharts);
 HighchartsAccessibility(Highcharts);
@@ -58,6 +57,14 @@ export default function CandlestickChart({
   const isLight = theme === "light";
 
   const candlestickChartRef = useRef<HighchartsReact.RefObject>(null);
+  const updateData = (value: number[]) => {
+    candlestickChartRef.current?.chart.series[0].addPoint(value);
+  };
+
+  const { ohlcDataSocket, ohlcDataSocketLoading } = useBitfinexOhlcSocket({
+    updateData,
+    symbol: coinSelected.symbol,
+  });
 
   const primaryColor = isLight ? "#2563EB" : "#3A81F4";
   const blackWhiteColor = isLight ? "#000000" : "#ffffff";
@@ -67,20 +74,6 @@ export default function CandlestickChart({
   const redColor = "#DC2626";
   const buttonFilterColor = isLight ? "#E5E7EB" : "#1F2937";
   const buttonFilterHoverColor = isLight ? "#CBD5E1" : "#334155";
-
-  const { dataOhlcApi, dataOhlcApiLoading } = useKrakenOhlcApi({
-    pair: coinSelected.pair,
-    resultKey: coinSelected.result,
-  });
-
-  const { ohlcDataSocket } = useKrakenOhlcSocket({
-    symbol: coinSelected.symbol,
-    skip: dataOhlcApiLoading,
-  });
-
-  useEffect(() => {
-    candlestickChartRef.current?.chart.series[0].addPoint(ohlcDataSocket);
-  }, [ohlcDataSocket, theme]);
 
   const options: Highcharts.Options = useMemo(() => {
     return {
@@ -170,7 +163,7 @@ export default function CandlestickChart({
       series: [
         {
           type: "candlestick",
-          data: dataOhlcApi,
+          data: ohlcDataSocket,
           color: redColor,
           upColor: greenColor,
           lastPrice: {
@@ -188,7 +181,7 @@ export default function CandlestickChart({
       ],
     };
   }, [
-    dataOhlcApi,
+    ohlcDataSocket,
     coinSelected,
     blackWhiteColor,
     borderColor,
@@ -200,7 +193,7 @@ export default function CandlestickChart({
 
   return (
     <>
-      {dataOhlcApiLoading ? (
+      {ohlcDataSocketLoading || ohlcDataSocket.length < 1 ? (
         <div className="h-[500px] w-full flex items-center justify-center">
           <ScaleLoader height={42} width={5} color={primaryColor} />
         </div>
