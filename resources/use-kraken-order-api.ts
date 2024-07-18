@@ -32,7 +32,8 @@ const useKrakenOrderAPi = ({
 
         setLoading(false);
       } catch (error) {
-        console.error("error", error);
+        console.error("error fetch order:", error);
+        setLoading(false);
       }
     };
 

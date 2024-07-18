@@ -47,7 +47,7 @@ const useKrakenOhlcApi = ({
         setDataOhlcApi(normalizeData);
         setLoading(false);
       } catch (error) {
-        console.error("error", error);
+        console.error("error fetch ohlc:", error);
         setLoading(false);
       }
     };

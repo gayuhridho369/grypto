@@ -47,6 +47,10 @@ const useKrakenOhlcSocket = ({
       }
     };
 
+    ws.current.onerror = (error) => {
+      console.error("error ws ohlc:", error);
+    };
+
     return () => {
       ws.current?.close();
     };
