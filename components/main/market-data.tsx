@@ -74,12 +74,8 @@ export default function MarketData() {
         </CardHeader>
 
         <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="col-span-1 md:col-span-2">
-            <CandlestickChart coinSelected={coinSelected} />
-          </div>
-          <div>
-            <OrderBook coinSelected={coinSelected} />
-          </div>
+          <CandlestickChart coinSelected={coinSelected} />
+          <OrderBook coinSelected={coinSelected} />
         </CardContent>
       </Card>
     </div>

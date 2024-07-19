@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import useBitfinexOrderSocket from "@/resources/use-bitfinex-order-socket ";
+import useBitfinexBookSocket from "@/resources/use-bitfinex-order-socket ";
 
 export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
   const { theme } = useTheme();
@@ -20,7 +20,7 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
 
   const primaryColor = isLight ? "#2563EB" : "#3A81F4";
 
-  const { orderDataSocket, orderDataSocketLoading } = useBitfinexOrderSocket({
+  const { bookData, bookDataLoading } = useBitfinexBookSocket({
     symbol: coinSelected.symbol,
   });
 
@@ -39,7 +39,7 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {orderDataSocketLoading ? (
+                {bookDataLoading ? (
                   <TableRow>
                     <TableCell colSpan={3}>
                       <div className="h-[120px] flex items-center justify-center">
@@ -48,7 +48,7 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
                     </TableCell>
                   </TableRow>
                 ) : (
-                  orderDataSocket.map((ask, index) => {
+                  bookData.map((ask, index) => {
                     if (ask[2] < 0) return null;
 
                     return (
@@ -74,12 +74,12 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
               <TableHeader>
                 <TableRow>
                   <TableHead>Price</TableHead>
-                  <TableHead>Amount</TableHead>
-                  <TableHead className="text-right">Total</TableHead>
+                  <TableHead>Count</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {orderDataSocketLoading ? (
+                {bookDataLoading ? (
                   <TableRow>
                     <TableCell colSpan={3}>
                       <div className="h-[120px] flex items-center justify-center">
@@ -88,7 +88,7 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
                     </TableCell>
                   </TableRow>
                 ) : (
-                  orderDataSocket.map((ask, index) => {
+                  bookData.map((ask, index) => {
                     if (ask[2] > 0) return null;
 
                     return (
@@ -98,7 +98,7 @@ export default function OrderBook({ coinSelected }: { coinSelected: Coin }) {
                         </TableCell>
                         <TableCell className="font-medium">{ask[1]}</TableCell>
                         <TableCell className="text-right font-medium">
-                          {Number(ask[2])}
+                          {Math.abs(Number(ask[2]))}
                         </TableCell>
                       </TableRow>
                     );

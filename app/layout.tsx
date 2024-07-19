@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme-provider";
-import HeaderSider from "@/components/main/header-sider";
-import Footer from "@/components/main/footer";
+import AppLayout from "@/components/main/app-layout";
 
 import "./globals.css";
 
@@ -27,11 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen w-full max-w-[1600px] overflow-x-hidden m-auto">
-            <HeaderSider />
-            {children}
-            <Footer />
-          </div>
+          <AppLayout>{children}</AppLayout>
         </ThemeProvider>
       </body>
     </html>
