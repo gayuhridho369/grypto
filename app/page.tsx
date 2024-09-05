@@ -5,6 +5,7 @@ import { MarketData } from "@/components/main/market-data-lazy";
 import TestimonialUser from "@/components/main/testimonial-user";
 
 export default function Page() {
+  // commenting
   return (
     <>
       <HeroBrand />
